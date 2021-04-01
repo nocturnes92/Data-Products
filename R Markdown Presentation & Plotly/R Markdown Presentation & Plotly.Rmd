@@ -2,7 +2,7 @@
 title: "A Sample R Markdown Presentation & Plotly"
 subtitle: 'Use Arrow or Space to advance to the next slide'
 author: "Yigang"
-date: "2021/4/1"
+date: "April 01, 2021"
 output: ioslides_presentation
 ---
 
@@ -47,7 +47,6 @@ ggplot(aes(x=am, y=mpg), data=mtcars) + geom_boxplot(aes(fill=am))+
         ylab("MPG")+
         labs(fill = "Transmission (0 = automatic, 1 = manual)")
 ```
-
 
 ## Thank You!
 
