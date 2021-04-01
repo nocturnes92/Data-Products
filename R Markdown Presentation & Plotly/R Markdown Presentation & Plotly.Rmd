@@ -1,0 +1,53 @@
+---
+title: "A Sample R Markdown Presentation & Plotly"
+subtitle: 'Use Arrow or Space to advance to the next slide'
+author: "Yigang"
+date: "2021/4/1"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+## Project Goal 
+
+Create a web page presentation using R Markdown that features a plot created with Plotly.
+
+## Load data set
+
+```{r}
+library(plotly)
+data("mtcars")
+head(mtcars)
+```
+
+## Data Processing 
+
+Use ggplot2 to visualize the effect of transmission type to MPG
+
+```{r eval=FALSE}
+library(ggplot2)
+mtcars$am <- as.factor(mtcars$am)
+ggplot(aes(x=am, y=mpg), data=mtcars) + geom_boxplot(aes(fill=am))+
+        labs(title = "MPG ~ Transmission Type")+
+        xlab("Transmission Type")+
+        ylab("MPG")+
+        labs(fill = "Transmission (0 = automatic, 1 = manual)")
+```
+
+## Data Visualization
+
+```{r echo=FALSE}
+library(ggplot2)
+mtcars$am <- as.factor(mtcars$am)
+ggplot(aes(x=am, y=mpg), data=mtcars) + geom_boxplot(aes(fill=am))+
+        labs(title = "MPG ~ Transmission Type")+
+        xlab("Transmission Type")+
+        ylab("MPG")+
+        labs(fill = "Transmission (0 = automatic, 1 = manual)")
+```
+
+
+## Thank You!
+
