@@ -1,0 +1,12 @@
+name: Cars
+title: Cars
+username:
+account: nocturnes92
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3896409
+bundleId: 4419892
+url: https://nocturnes92.shinyapps.io/Cars/
+when: 1617272272.50593
+asMultiple: FALSE
+asStatic: FALSE
