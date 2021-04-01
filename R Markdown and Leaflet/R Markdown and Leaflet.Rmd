@@ -1,0 +1,55 @@
+---
+title: "R Markdown and Leaflet"
+author: "Yigang"
+date: "April 1, 2021"
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+---
+
+# Leaflet for R
+Leaflet is one of the most popular open-source JavaScript libraries for interactive maps. It’s used by websites ranging from The New York Times and The Washington Post to GitHub and Flickr, as well as GIS specialists like OpenStreetMap, Mapbox, and CartoDB.
+
+# Goal 
+Create a web page using R Markdown that features a map created with Leaflet. 
+Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity! 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Create Map and Add Markers
+
+```{r}
+library(leaflet)
+library(dplyr)
+
+mymap <- leaflet() %>% addTiles() %>%
+        addMarkers(lat=40.01077, lng=116.39204, 
+                   popup="Olympic Forest Park")
+mymap
+
+```
+
+## Generate More Markers
+
+```{r}
+set.seed(2021-04-01)
+df <- data.frame(lat = runif(100, min = 39.91, max = 40.11),
+                 lng = runif(100, min = 116.29, max = 116.49))
+df %>% 
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers()
+```
+
+## Make clusters 
+
+```{r}
+df %>% 
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(clusterOptions = markerClusterOptions())
+```
