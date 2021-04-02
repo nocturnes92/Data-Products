@@ -17,36 +17,33 @@ Create a web page presentation using R Markdown that features a plot created wit
 ## Load data set
 
 ```{r}
-library(plotly)
 data("mtcars")
 head(mtcars)
 ```
 
 ## Data Processing 
 
-Use ggplot2 to visualize the effect of transmission type to MPG
+Use plotly to visualize the effect of gross horsepower to MPG
 
-```{r eval=FALSE}
-library(ggplot2)
-mtcars$am <- as.factor(mtcars$am)
-ggplot(aes(x=am, y=mpg), data=mtcars) + geom_boxplot(aes(fill=am))+
-        labs(title = "MPG ~ Transmission Type")+
-        xlab("Transmission Type")+
-        ylab("MPG")+
-        labs(fill = "Transmission (0 = automatic, 1 = manual)")
+```{r results='hide'}
+library(plotly)
+library(dplyr)
+fit <- lm(mpg~hp, mtcars)
+mtcars %>% plot_ly(x = ~hp) %>% 
+        add_markers(y = ~mpg) %>% 
+        add_lines(x = ~hp, y = fitted(fit))
+
 ```
 
 ## Data Visualization
 
 ```{r echo=FALSE}
-library(ggplot2)
-mtcars$am <- as.factor(mtcars$am)
-ggplot(aes(x=am, y=mpg), data=mtcars) + geom_boxplot(aes(fill=am))+
-        labs(title = "MPG ~ Transmission Type")+
-        xlab("Transmission Type")+
-        ylab("MPG")+
-        labs(fill = "Transmission (0 = automatic, 1 = manual)")
+fit <- lm(mpg~hp, mtcars)
+mtcars %>% plot_ly(x = ~hp) %>% 
+        add_markers(y = ~mpg) %>% 
+        add_lines(x = ~hp, y = fitted(fit))
 ```
 
 ## Thank You!
+
 
